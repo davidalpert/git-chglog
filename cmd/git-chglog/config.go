@@ -6,7 +6,7 @@ import (
 
 	"github.com/imdario/mergo"
 
-	chglog "github.com/git-chglog/git-chglog"
+	chglog "github.com/davidalpert/git-chglog"
 )
 
 // Info ...

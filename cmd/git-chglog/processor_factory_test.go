@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	chglog "github.com/git-chglog/git-chglog"
+	chglog "github.com/davidalpert/git-chglog"
 )
 
 func TestProcessorFactory(t *testing.T) {

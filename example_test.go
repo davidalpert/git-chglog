@@ -15,7 +15,7 @@ func Example() {
 			Template:   "CHANGELOG.tpl.md",
 			Info: &Info{
 				Title:         "CHANGELOG",
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{
 				CommitFilters: map[string][]string{

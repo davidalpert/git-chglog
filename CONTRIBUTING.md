@@ -48,7 +48,7 @@ also the place to reference GitHub issues that this commit **Closes**.
 **Breaking Changes** should start with the word `BREAKING CHANGE:` with a space
 or two newlines. The rest of the commit message is then used for this.
 
-[submitting an issue]: https://github.com/git-chglog/git-chglog/issues
-[GitHub Repository]: https://github.com/git-chglog/git-chglog
+[submitting an issue]: https://github.com/davidalpert/git-chglog/issues
+[GitHub Repository]: https://github.com/davidalpert/git-chglog
 [Angular commit message]: https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-format
 [closing reference to an issue]: https://help.github.com/articles/closing-issues-via-commit-messages/

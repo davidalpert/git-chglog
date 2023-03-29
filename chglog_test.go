@@ -82,7 +82,7 @@ func TestGeneratorNotFoundTags(t *testing.T) {
 			WorkingDir: filepath.Join(testRepoRoot, testName),
 			Template:   filepath.Join(cwd, "testdata", testName+".md"),
 			Info: &Info{
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{},
 		})
@@ -111,7 +111,7 @@ func TestGeneratorNotFoundCommits(t *testing.T) {
 			WorkingDir: filepath.Join(testRepoRoot, testName),
 			Template:   filepath.Join(cwd, "testdata", testName+".md"),
 			Info: &Info{
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{},
 		})
@@ -139,7 +139,7 @@ func TestGeneratorNotFoundCommitsOne(t *testing.T) {
 			WorkingDir: filepath.Join(testRepoRoot, testName),
 			Template:   filepath.Join(cwd, "testdata", testName+".md"),
 			Info: &Info{
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{
 				CommitFilters:        map[string][]string{},
@@ -217,7 +217,7 @@ change message.`)
 			Template:   filepath.Join(cwd, "testdata", testName+".md"),
 			Info: &Info{
 				Title:         "CHANGELOG Example",
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{
 				Sort: "date",
@@ -306,9 +306,9 @@ Online breaking change message.
 - **core:** Add foo bar
 
 
-[Unreleased]: https://github.com/git-chglog/git-chglog/compare/2.0.0-beta.0...HEAD
-[2.0.0-beta.0]: https://github.com/git-chglog/git-chglog/compare/1.1.0...2.0.0-beta.0
-[1.1.0]: https://github.com/git-chglog/git-chglog/compare/1.0.0...1.1.0`, expected)
+[Unreleased]: https://github.com/davidalpert/git-chglog/compare/2.0.0-beta.0...HEAD
+[2.0.0-beta.0]: https://github.com/davidalpert/git-chglog/compare/1.1.0...2.0.0-beta.0
+[1.1.0]: https://github.com/davidalpert/git-chglog/compare/1.0.0...1.1.0`, expected)
 }
 
 func TestGeneratorWithNextTag(t *testing.T) {
@@ -332,7 +332,7 @@ func TestGeneratorWithNextTag(t *testing.T) {
 			Template:   filepath.Join(cwd, "testdata", testName+".md"),
 			Info: &Info{
 				Title:         "CHANGELOG Example",
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{
 				Sort:    "date",
@@ -384,9 +384,9 @@ func TestGeneratorWithNextTag(t *testing.T) {
 - **core:** version 1.0.0
 
 
-[Unreleased]: https://github.com/git-chglog/git-chglog/compare/3.0.0...HEAD
-[3.0.0]: https://github.com/git-chglog/git-chglog/compare/2.0.0...3.0.0
-[2.0.0]: https://github.com/git-chglog/git-chglog/compare/1.0.0...2.0.0`, expected)
+[Unreleased]: https://github.com/davidalpert/git-chglog/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/davidalpert/git-chglog/compare/2.0.0...3.0.0
+[2.0.0]: https://github.com/davidalpert/git-chglog/compare/1.0.0...2.0.0`, expected)
 
 	buf = &bytes.Buffer{}
 	err = gen.Generate(buf, "3.0.0")
@@ -403,8 +403,8 @@ func TestGeneratorWithNextTag(t *testing.T) {
 - **core:** version 3.0.0
 
 
-[Unreleased]: https://github.com/git-chglog/git-chglog/compare/3.0.0...HEAD
-[3.0.0]: https://github.com/git-chglog/git-chglog/compare/2.0.0...3.0.0`, expected)
+[Unreleased]: https://github.com/davidalpert/git-chglog/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/davidalpert/git-chglog/compare/2.0.0...3.0.0`, expected)
 }
 
 func TestGeneratorWithTagFiler(t *testing.T) {
@@ -426,7 +426,7 @@ func TestGeneratorWithTagFiler(t *testing.T) {
 			Template:   filepath.Join(cwd, "testdata", testName+".md"),
 			Info: &Info{
 				Title:         "CHANGELOG Example",
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{
 				TagFilterPattern: "^v",
@@ -466,7 +466,7 @@ func TestGeneratorWithTagFiler(t *testing.T) {
 - **core:** version dev-1.0.0
 
 
-[Unreleased]: https://github.com/git-chglog/git-chglog/compare/v1.0.0...HEAD`, expected)
+[Unreleased]: https://github.com/davidalpert/git-chglog/compare/v1.0.0...HEAD`, expected)
 
 }
 
@@ -498,7 +498,7 @@ Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.
 			Template:   filepath.Join(cwd, "testdata", testName+".md"),
 			Info: &Info{
 				Title:         "CHANGELOG Example",
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{
 				CommitFilters: map[string][]string{
@@ -546,7 +546,7 @@ Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.
 When using .TrimmedBody Notes are not included and can only appear in the Notes section.
 
 
-[Unreleased]: https://github.com/git-chglog/git-chglog/compare/1.0.0...HEAD`, expected)
+[Unreleased]: https://github.com/davidalpert/git-chglog/compare/1.0.0...HEAD`, expected)
 }
 
 func TestGeneratorWithSprig(t *testing.T) {
@@ -570,7 +570,7 @@ func TestGeneratorWithSprig(t *testing.T) {
 			Template:   filepath.Join(cwd, "testdata", testName+".md"),
 			Info: &Info{
 				Title:         "CHANGELOG Example",
-				RepositoryURL: "https://github.com/git-chglog/git-chglog",
+				RepositoryURL: "https://github.com/davidalpert/git-chglog",
 			},
 			Options: &Options{
 				Sort:    "date",
@@ -623,8 +623,8 @@ func TestGeneratorWithSprig(t *testing.T) {
 - **CORE:** version 1.0.0
 
 
-[Unreleased]: https://github.com/git-chglog/git-chglog/compare/3.0.0...HEAD
-[3.0.0]: https://github.com/git-chglog/git-chglog/compare/2.0.0...3.0.0
-[2.0.0]: https://github.com/git-chglog/git-chglog/compare/1.0.0...2.0.0`, expected)
+[Unreleased]: https://github.com/davidalpert/git-chglog/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/davidalpert/git-chglog/compare/2.0.0...3.0.0
+[2.0.0]: https://github.com/davidalpert/git-chglog/compare/1.0.0...2.0.0`, expected)
 
 }
