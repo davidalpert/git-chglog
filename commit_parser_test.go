@@ -319,6 +319,10 @@ Closes username/repository#456`, "```", "```"),
 type mockJiraClient struct {
 }
 
+func (jira mockJiraClient) Validate() error {
+	return nil
+}
+
 func (jira mockJiraClient) GetJiraIssue(id string) (*agjira.Issue, error) {
 	return &agjira.Issue{
 		ID: id,

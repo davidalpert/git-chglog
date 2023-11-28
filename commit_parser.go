@@ -116,6 +116,13 @@ func (p *commitParser) Parse(rev string) ([]*Commit, error) {
 		return nil, err
 	}
 
+	if p.jiraClient != nil {
+		err = p.jiraClient.Validate()
+		if err != nil {
+			p.logger.Log(fmt.Sprintf("cannot look up jira issues: %s", err.Error()))
+		}
+	}
+
 	processor := p.config.Options.Processor
 	lines := strings.Split(out, separator)
 	lines = lines[1:]
@@ -161,7 +168,7 @@ func (p *commitParser) parseCommit(input string) *Commit {
 	}
 
 	// Jira
-	if commit.JiraIssueID != "" {
+	if commit.JiraIssueID != "" && p.jiraClient != nil && p.jiraClient.Validate() == nil {
 		p.processJiraIssue(commit, commit.JiraIssueID)
 	}
 
