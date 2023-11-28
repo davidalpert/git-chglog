@@ -44,7 +44,8 @@ type Options struct {
 	JiraURL                     string
 	JiraTypeMaps                map[string]string
 	JiraIssueDescriptionPattern string
-	Paths                       []string // Path filter
+	Paths                       []string               // Path filter
+	Args                        map[string]interface{} // key-value arguments to pass into the template
 }
 
 // Info is metadata related to CHANGELOG
@@ -55,6 +56,7 @@ type Info struct {
 
 // RenderData is the data passed to the template
 type RenderData struct {
+	Args       map[string]interface{}
 	Info       *Info
 	Unreleased *Unreleased
 	Versions   []*Version
@@ -374,6 +376,7 @@ func (gen *Generator) render(w io.Writer, unreleased *Unreleased, versions []*Ve
 	t := template.Must(template.New(fname).Funcs(sprig.TxtFuncMap()).Funcs(fmap).ParseFiles(gen.config.Template))
 
 	return t.Execute(w, &RenderData{
+		Args:       gen.config.Options.Args,
 		Info:       gen.config.Info,
 		Unreleased: unreleased,
 		Versions:   versions,

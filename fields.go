@@ -123,6 +123,7 @@ type Version struct {
 	MergeCommits  []*Commit
 	RevertCommits []*Commit
 	NoteGroups    []*NoteGroup
+	Args          map[string]interface{}
 }
 
 // Unreleased is unreleased commit dataset
@@ -132,4 +133,5 @@ type Unreleased struct {
 	MergeCommits  []*Commit
 	RevertCommits []*Commit
 	NoteGroups    []*NoteGroup
+	Args          map[string]interface{}
 }
