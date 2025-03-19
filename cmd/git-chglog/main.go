@@ -128,7 +128,12 @@ func CreateApp(actionFunc cli.ActionFunc) *cli.App {
 
 		&cli.StringFlag{
 			Name:  "next-tag",
-			Usage: "treat unreleased commits as specified tags (EXPERIMENTAL)",
+			Usage: "treat unreleased commits as specified tag (EXPERIMENTAL)",
+		},
+
+		&cli.StringFlag{
+			Name:  "next-tag-date",
+			Usage: "treat unreleased commits as being tagged at the specified date (defaults to date of the most recent commit, falling back to time.Now()  (EXPERIMENTAL)",
 		},
 
 		// silent
@@ -248,6 +253,7 @@ func AppAction(c *cli.Context) error {
 			NoCaseSensitive:  c.Bool("no-case"),
 			Query:            c.Args().First(),
 			NextTag:          c.String("next-tag"),
+			NextTagDate:      c.String("next-tag-date"),
 			TagFilterPattern: c.String("tag-filter-pattern"),
 			JiraUsername:     c.String("jira-username"),
 			JiraToken:        c.String("jira-token"),

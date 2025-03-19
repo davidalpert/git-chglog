@@ -19,6 +19,7 @@ type CLIContext struct {
 	NoCaseSensitive  bool
 	Query            string
 	NextTag          string
+	NextTagDate      string
 	TagFilterPattern string
 	JiraUsername     string
 	JiraToken        string

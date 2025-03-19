@@ -19,7 +19,8 @@ import (
 // Options is an option used to process commits
 type Options struct {
 	Processor                   Processor
-	NextTag                     string              // Treat unreleased commits as specified tags (EXPERIMENTAL)
+	NextTag                     string              // Treat unreleased commits as specified tag (EXPERIMENTAL)
+	NextTagDate                 string              // treat unreleased commits as being tagged at the specified date (defaults to date of the most recent commit, falling back to time.Now() (EXPERIMENTAL)
 	TagFilterPattern            string              // Filter tag by regexp
 	Sort                        string              // Specify how to sort tags; currently supports "date" (default) or by "semver".
 	NoCaseSensitive             bool                // Filter commits in a case insensitive way
@@ -189,6 +190,7 @@ func (gen *Generator) buildVersionsFromRefs(query string) (*Unreleased, []*Versi
 
 func (gen *Generator) readVersions(tags []*Tag, first string) ([]*Version, error) {
 	next := gen.config.Options.NextTag
+	nextDateStr := gen.config.Options.NextTagDate
 	versions := []*Version{}
 
 	for i, tag := range tags {
@@ -231,9 +233,25 @@ func (gen *Generator) readVersions(tags []*Tag, first string) ([]*Version, error
 			NoteGroups:    noteGroups,
 		})
 
-		// Instead of `getTags()`, assign the date to the tag
-		if isNext && len(commits) != 0 {
-			tag.Date = commits[0].Author.Date
+		// Instead of `getTags()`, assign the date of the first to the tag
+		if isNext {
+			if nextDateStr != "" {
+				if strings.EqualFold(nextDateStr, "yesterday") {
+					tag.Date = time.Now().Add(-24 * time.Hour)
+				} else if strings.EqualFold(nextDateStr, "now") || strings.EqualFold(nextDateStr, "today") {
+					tag.Date = time.Now()
+				} else if strings.EqualFold(nextDateStr, "tomorrow") {
+					tag.Date = time.Now().Add(24 * time.Hour)
+				} else if t, tErr := time.Parse("2006-01-02", nextDateStr); tErr != nil {
+					return nil, tErr
+				} else {
+					tag.Date = t
+				}
+			} else if len(commits) != 0 {
+				tag.Date = commits[0].Author.Date
+			} else {
+				tag.Date = time.Now()
+			}
 		}
 	}
 

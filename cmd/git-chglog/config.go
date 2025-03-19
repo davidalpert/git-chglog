@@ -319,6 +319,7 @@ func (config *Config) Convert(ctx *CLIContext) *chglog.Config {
 		},
 		Options: &chglog.Options{
 			NextTag:                     ctx.NextTag,
+			NextTagDate:                 ctx.NextTagDate,
 			TagFilterPattern:            ctx.TagFilterPattern,
 			Sort:                        orValue(ctx.Sort, opts.Sort),
 			NoCaseSensitive:             ctx.NoCaseSensitive,
